@@ -18,7 +18,7 @@ namespace CapaPresentacion.Forms
             InitializeComponent();
             this.CargarControles();
         }
-
+        
         private void LimpiarControles()
         {
         }
