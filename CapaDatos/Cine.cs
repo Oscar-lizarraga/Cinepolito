@@ -190,14 +190,23 @@ namespace CapaDatos
 
 
         #region Funciones
+        /// <summary>
+        /// Metodo que argega una nueva funcion a la BDD
+        /// </summary>
+        /// <param name="funcion">El parametro funcion debe contener todas las propiedades</param>
+        /// <param name="sala">El paranetro sala debe contener la propiedad idSala</param>
+        /// <returns></returns>
         public string AgregarFuncion(Funcion funcion, Sala sala)
         {
             string respuesta = string.Empty;
+            //Usamos el using para no tener que cerrar la conexion con un finally
             using (SQLiteConnection conexion = Connection)
             {
+                //Abrimos la conexion con la base de datos
                 Connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
+                    //Al comando le asignamos la conexion previamente abierta
                     command.Connection = conexion;
                     command.CommandText = "insert into Funcion(idSala, descripcion, duracion, genero, precioVenta, fecha) values " +
                                             "(@idSala, @descripcion, @duracion, @genero, @precioVenta, @fecha)";
@@ -208,7 +217,9 @@ namespace CapaDatos
                     command.Parameters.AddWithValue("@precioVenta", funcion.PrecioVenta);
                     command.Parameters.AddWithValue("@fecha", funcion.GetFecha());
                     command.CommandType = CommandType.Text;
-                    if (command.ExecuteNonQuery() == 1) respuesta = "Registro aceptado";
+
+                    //Si la consulta modifico algo nos arrojara un 1, en caso contrario un 0
+                    if (command.ExecuteNonQuery() == 1) respuesta = "Registro aceptado"; 
                     else respuesta = "No se registro";
                 }
             }

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapaPresentacion.Forms
@@ -15,15 +8,23 @@ namespace CapaPresentacion.Forms
         public FormVentasDelDia()
         {
             InitializeComponent();
-            Cargar();
+            this.Cargar();
         }
 
+        /// <summary>
+        /// Funcion que carga las ventas del dia del sistema
+        /// </summary>
         private void Cargar()
         {
             this.dataGridViewVentas.DataSource = new CapaDatos.VentaDulceria().MostrarVentasPorFecha(DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"));
             this.CalcularGanancias();
         }
 
+        /// <summary>
+        /// Evento que manda a traer las consultas de las ventas entre determinadas fechas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
             this.dataGridViewVentas.DataSource =
@@ -33,6 +34,9 @@ namespace CapaPresentacion.Forms
             this.CalcularGanancias();
         }
 
+        /// <summary>
+        /// Funcion que muestra en un label las ganancias entre las fechas indicadas
+        /// </summary>
         private void CalcularGanancias()
         {
             this.labelVentasTotales.Text = "0.0";

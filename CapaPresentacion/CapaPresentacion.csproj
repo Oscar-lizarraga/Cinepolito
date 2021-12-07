@@ -92,6 +92,12 @@
     <Compile Include="Forms\FormVentaCobrar.Designer.cs">
       <DependentUpon>FormVentaCobrar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormVentaCobrarBoleto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormVentaCobrarBoleto.Designer.cs">
+      <DependentUpon>FormVentaCobrarBoleto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormVentaDulceria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,12 @@
     </Compile>
     <Compile Include="Forms\FormVentasDelDia.Designer.cs">
       <DependentUpon>FormVentasDelDia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormVentasDelDiaBoletos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormVentasDelDiaBoletos.Designer.cs">
+      <DependentUpon>FormVentasDelDiaBoletos.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormVentaTaquilla.cs">
       <SubType>Form</SubType>
@@ -133,11 +145,17 @@
     <EmbeddedResource Include="Forms\FormVentaCobrar.resx">
       <DependentUpon>FormVentaCobrar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormVentaCobrarBoleto.resx">
+      <DependentUpon>FormVentaCobrarBoleto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormVentaDulceria.resx">
       <DependentUpon>FormVentaDulceria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormVentasDelDia.resx">
       <DependentUpon>FormVentasDelDia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormVentasDelDiaBoletos.resx">
+      <DependentUpon>FormVentasDelDiaBoletos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormVentaTaquilla.resx">
       <DependentUpon>FormVentaTaquilla.cs</DependentUpon>

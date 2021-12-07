@@ -130,7 +130,82 @@ namespace CapaDatos
                     sQLite.Fill(data);
                 }
             }
-            return Convert.ToInt32(data.Rows[0]["sum(cantidadBoletos)"]);
+            if (data.Rows[0][0] != DBNull.Value)
+            {
+                return Convert.ToInt32(data.Rows[0][0]);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public string AgregarVentaBoleto(Funcion funcion, VentaTaquilla ventaTaquilla, Sala sala, Boleto boleto)
+        {
+            string respuesta = string.Empty;
+            using (var conexion = Connection)
+            {
+                Connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand())
+                {
+                    command.Connection = conexion;
+                    command.CommandText = "insert into VentaBoleto(idFuncion, idSala, totalVenta, cantidadBoletos, fechaVenta) values " +
+                                            "(@idFuncion, @idSala, @totalVenta, @cantidadBoletos, @fechaVenta)";
+                    command.Parameters.AddWithValue("@idFuncion", funcion.IdFuncion);
+                    command.Parameters.AddWithValue("@idSala", sala.IdSala);
+                    command.Parameters.AddWithValue("@totalVenta", ventaTaquilla.TotalVenta);
+                    command.Parameters.AddWithValue("@cantidadBoletos", ventaTaquilla.CantidadBoletos);
+                    command.Parameters.AddWithValue("@fechaVenta", boleto.GetFechaVenta());
+
+                    command.CommandType = CommandType.Text;
+                    if (command.ExecuteNonQuery() == 1) respuesta = "Registro aceptado";
+                    else respuesta = "No se registro";
+                }
+            }
+            return respuesta;
+        }
+
+
+        public DataTable MostrarVentaBoleto(DateTime fechaInicial, DateTime fechaFinal)
+        {
+            DataTable data = new DataTable();
+            using (var conexion = Connection)
+            {
+                Connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand())
+                {
+                    command.Connection = conexion;
+                    command.CommandText = "select * from VentaBoleto where fechaVenta between @fechaInicial and @fechaFinal;";
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@fechaInicial", fechaInicial);
+                    command.Parameters.AddWithValue("@fechaFinal", fechaFinal);
+                    SQLiteDataAdapter sQLite = new SQLiteDataAdapter(command);
+                    sQLite.Fill(data);
+                }
+            }
+            return data;
+        }
+
+
+        public DataTable MostrarVentasPorFecha(string fechaInicial, string fechaFinal)
+        {
+            DataTable data = new DataTable();
+            using (var conexion = Connection)
+            {
+                Connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand())
+                {
+                    command.Connection = conexion;
+                    command.CommandText = "select * from VentaBoleto where fechaVenta between @fechaInicial and @fechaFinal";
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@fechaInicial", fechaInicial);
+                    command.Parameters.AddWithValue("@fechaFinal", fechaFinal);
+                    SQLiteDataAdapter sQLite = new SQLiteDataAdapter(command);
+                    sQLite.Fill(data);
+                }
+            }
+            return data;
+
         }
 
 
