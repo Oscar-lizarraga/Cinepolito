@@ -226,8 +226,11 @@ namespace CapaPresentacion.Forms
                 CapaDatos.Boleto boleto = new CapaDatos.Boleto();
                 boleto.SetFechaVenta(DateTime.Now);
 
+                CapaDatos.Empleado empleado = new CapaDatos.Empleado();
+                empleado.IdEmpleado = new CapaDatos.Cine().ObtenerIDEmpleadoActual();
+
                 //Se llama la funcion de agregar un boleto y esperamos como respuesta "Registro aceptado" si todo funciono correctamente
-                string respuesta = ventaTaquilla.AgregarVentaBoleto(funcion, ventaTaquilla, sala, boleto);
+                string respuesta = ventaTaquilla.AgregarVentaBoleto(funcion, ventaTaquilla, sala, boleto,  empleado);
                 if (respuesta.Equals("Registro aceptado"))
                 {
                     MessageBox.Show(respuesta);

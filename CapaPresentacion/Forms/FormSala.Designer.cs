@@ -52,9 +52,9 @@ namespace CapaPresentacion.Forms
             this.groupBoxDatos.Controls.Add(this.buttonEditar);
             this.groupBoxDatos.Controls.Add(this.dataGridViewSalas);
             this.groupBoxDatos.Location = new System.Drawing.Point(343, 19);
-            this.groupBoxDatos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxDatos.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxDatos.Name = "groupBoxDatos";
-            this.groupBoxDatos.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxDatos.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxDatos.Size = new System.Drawing.Size(686, 405);
             this.groupBoxDatos.TabIndex = 1;
             this.groupBoxDatos.TabStop = false;
@@ -63,7 +63,7 @@ namespace CapaPresentacion.Forms
             // buttonEliminar
             // 
             this.buttonEliminar.Location = new System.Drawing.Point(90, 365);
-            this.buttonEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(81, 35);
             this.buttonEliminar.TabIndex = 2;
@@ -74,7 +74,7 @@ namespace CapaPresentacion.Forms
             // buttonEditar
             // 
             this.buttonEditar.Location = new System.Drawing.Point(4, 365);
-            this.buttonEditar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonEditar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.Size = new System.Drawing.Size(81, 35);
             this.buttonEditar.TabIndex = 1;
@@ -84,9 +84,11 @@ namespace CapaPresentacion.Forms
             // 
             // dataGridViewSalas
             // 
+            this.dataGridViewSalas.AllowUserToAddRows = false;
+            this.dataGridViewSalas.AllowUserToDeleteRows = false;
             this.dataGridViewSalas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSalas.Location = new System.Drawing.Point(2, 15);
-            this.dataGridViewSalas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewSalas.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewSalas.MultiSelect = false;
             this.dataGridViewSalas.Name = "dataGridViewSalas";
             this.dataGridViewSalas.ReadOnly = true;
@@ -105,9 +107,9 @@ namespace CapaPresentacion.Forms
             this.groupBoxRegistro.Controls.Add(this.buttonGuardar);
             this.groupBoxRegistro.Controls.Add(this.comboBoxTipoSala);
             this.groupBoxRegistro.Location = new System.Drawing.Point(32, 19);
-            this.groupBoxRegistro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxRegistro.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxRegistro.Name = "groupBoxRegistro";
-            this.groupBoxRegistro.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxRegistro.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxRegistro.Size = new System.Drawing.Size(295, 405);
             this.groupBoxRegistro.TabIndex = 0;
             this.groupBoxRegistro.TabStop = false;
@@ -126,7 +128,7 @@ namespace CapaPresentacion.Forms
             // numericUpDownAsientos
             // 
             this.numericUpDownAsientos.Location = new System.Drawing.Point(20, 119);
-            this.numericUpDownAsientos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDownAsientos.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDownAsientos.Name = "numericUpDownAsientos";
             this.numericUpDownAsientos.Size = new System.Drawing.Size(182, 20);
             this.numericUpDownAsientos.TabIndex = 1;
@@ -144,7 +146,7 @@ namespace CapaPresentacion.Forms
             // buttonCancelar
             // 
             this.buttonCancelar.Location = new System.Drawing.Point(121, 365);
-            this.buttonCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(81, 35);
             this.buttonCancelar.TabIndex = 3;
@@ -155,7 +157,7 @@ namespace CapaPresentacion.Forms
             // buttonGuardar
             // 
             this.buttonGuardar.Location = new System.Drawing.Point(20, 365);
-            this.buttonGuardar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(81, 35);
             this.buttonGuardar.TabIndex = 2;
@@ -173,7 +175,7 @@ namespace CapaPresentacion.Forms
             "IMAX",
             "PREMIUM"});
             this.comboBoxTipoSala.Location = new System.Drawing.Point(20, 52);
-            this.comboBoxTipoSala.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxTipoSala.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxTipoSala.Name = "comboBoxTipoSala";
             this.comboBoxTipoSala.Size = new System.Drawing.Size(183, 21);
             this.comboBoxTipoSala.TabIndex = 0;
@@ -185,7 +187,7 @@ namespace CapaPresentacion.Forms
             this.ClientSize = new System.Drawing.Size(1111, 455);
             this.Controls.Add(this.groupBoxDatos);
             this.Controls.Add(this.groupBoxRegistro);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormSala";
             this.Text = "FormSala";
             this.groupBoxDatos.ResumeLayout(false);

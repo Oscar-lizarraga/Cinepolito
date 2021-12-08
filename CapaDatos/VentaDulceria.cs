@@ -8,6 +8,9 @@ namespace CapaDatos
 {
     public class VentaDulceria : Conexion
     {
+        /// <summary>
+        /// Campos de la clase VentaDulceria
+        /// </summary>
         private int idVenta;
         private DateTime fechaVenta;
         private float totalVenta;
@@ -16,6 +19,9 @@ namespace CapaDatos
         private List<Articulo> articulos;
         private FormaPago formaPago;
 
+        /// <summary>
+        /// Constructres de la clase VentaDulceria
+        /// </summary>
         public VentaDulceria()
         {
 
@@ -32,6 +38,10 @@ namespace CapaDatos
             this.formaPago = formaPago;
         }
 
+
+        /// <summary>
+        /// Propiedades de la clase ventaDulceria
+        /// </summary>
         public int IdVenta { get => idVenta; set => idVenta = value; }
         public float TotalVenta { get => totalVenta; set => totalVenta = value; }
         public float TotalCostoProveedor { get => totalCostoProveedor; set => totalCostoProveedor = value; }
@@ -49,7 +59,12 @@ namespace CapaDatos
         }
 
 
-        public string AgregarVentaDulceria(VentaDulceria venta)
+        /// <summary>
+        /// Metodo que agrega una nueva venta de dulceria
+        /// </summary>
+        /// <param name="venta">el parametro de tipo ventaDulceria debe contener todas sus propiedades</param>
+        /// <returns>string con mensaje de si se acpeto o no</returns>
+        public string AgregarVentaDulceria(VentaDulceria venta, Empleado empleado)
         {
             string respuesta = string.Empty;
             SQLiteConnection conexion = Connection;
@@ -58,14 +73,15 @@ namespace CapaDatos
             using (SQLiteCommand command = new SQLiteCommand())
             {
                 command.Connection = conexion;
-                command.CommandText = "insert into Venta(fechaVenta, totalVenta, totalCostoProveedor, totalArticulos, formaPago) values " +
-                                        "(@fechaVenta, ROUND(@totalVenta,2), ROUND(@totalCostoProveedor,2), @totalArticulos, @formaPago); " +
+                command.CommandText = "insert into Venta(fechaVenta, totalVenta, totalCostoProveedor, totalArticulos, formaPago, idEmpleado) values " +
+                                        "(@fechaVenta, ROUND(@totalVenta,2), ROUND(@totalCostoProveedor,2), @totalArticulos, @formaPago, @idEmpleado); " +
                                         "SELECT * FROM Venta ORDER BY idVenta DESC LIMIT 1;";
                 command.Parameters.AddWithValue("@fechaVenta", venta.GetFechaVenta());
                 command.Parameters.AddWithValue("@totalVenta", venta.TotalVenta);
                 command.Parameters.AddWithValue("@totalCostoProveedor", venta.TotalCostoProveedor);
                 command.Parameters.AddWithValue("@totalArticulos", venta.TotalArticulos);
                 command.Parameters.AddWithValue("@formaPago", venta.FormaPago);
+                command.Parameters.AddWithValue("@idEmpleado", empleado.IdEmpleado);
                 command.CommandType = CommandType.Text;
 
                 DataTable data = new DataTable();
@@ -78,6 +94,12 @@ namespace CapaDatos
 
         }
 
+        /// <summary>
+        /// Este metodo agrega a la tabla ventaArticulo el conjunto de llaves foraneas de articulo y venta a la bdd
+        /// </summary>
+        /// <param name="venta"></param>
+        /// <param name="connection"></param>
+        /// <returns>String con mensaje de si se acepto o no</returns>
         public string AgregarVentaArticulo(VentaDulceria venta, ref SQLiteConnection connection)
         {
             string respuesta = string.Empty;
@@ -101,13 +123,18 @@ namespace CapaDatos
             return respuesta;
         }
 
-
+        /// <summary>
+        /// Este metodo muestra todas las ventas entre fechas datas
+        /// </summary>
+        /// <param name="fechaInicial"></param>
+        /// <param name="fechaFinal"></param>
+        /// <returns>Datatable</returns>
         public DataTable MostrarVentasPorFecha(string fechaInicial, string fechaFinal)
         {
             DataTable data = new DataTable();
             using (var conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;

@@ -1,4 +1,5 @@
 ﻿using Datos;
+using System;
 using System.Data;
 using System.Data.SQLite;
 
@@ -7,9 +8,18 @@ namespace CapaDatos
 {
     public class Cine : Conexion
     {
+        /// <summary>
+        /// Campos de la clase
+        /// </summary>
         private int idCine;
         private string nombreCine;
 
+
+        /// <summary>
+        /// Constructores de la clase
+        /// </summary>
+        /// <param name="idCine"></param>
+        /// <param name="nombreCine"></param>
         public Cine(int idCine, string nombreCine)
         {
             this.idCine = idCine;
@@ -21,18 +31,27 @@ namespace CapaDatos
 
         }
 
+
+        /// <summary>
+        /// Propiedades de la clase
+        /// </summary>
         public int IdCine { get => idCine; set => idCine = value; }
         public string NombreCine { get => nombreCine; set => nombreCine = value; }
 
 
 
         #region salas
+        /// <summary>
+        /// Este metodo agrega una nueva sala a la BDD
+        /// </summary>
+        /// <param name="sala"></param>
+        /// <returns></returns>
         public string AgregarSala(Sala sala)
         {
             string respuesta = string.Empty;
             using (SQLiteConnection conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;
@@ -48,11 +67,16 @@ namespace CapaDatos
             return respuesta;
         }
 
+        /// <summary>
+        /// Este metodo edita una sala de la base de datos
+        /// </summary>
+        /// <param name="sala">Se requiere un parametro de tipo Sala con el idSala</param>
+        /// <returns></returns>
         public string EditarSala(Sala sala)
         {
             using (SQLiteConnection conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;
@@ -67,11 +91,17 @@ namespace CapaDatos
             }
         }
 
+
+        /// <summary>
+        /// Este metodo elimina una sala de la BDD
+        /// </summary>
+        /// <param name="sala">Se quiere un parametro de tipo Sala debe tener idSala</param>
+        /// <returns></returns>
         public string EliminarSala(Sala sala)
         {
             using (SQLiteConnection conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;
@@ -84,12 +114,17 @@ namespace CapaDatos
             }
         }
 
+
+        /// <summary>
+        /// Este metodo muestra todas las salas de la BDD
+        /// </summary>
+        /// <returns>Datatable</returns>
         public DataTable MostrarTodasLasSalas()
         {
             DataTable data = new DataTable();
             using (var conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;
@@ -104,14 +139,18 @@ namespace CapaDatos
         }
         #endregion
 
-
+        /// <summary>
+        /// Este metodo agrega un nuevo empleado a la BDD
+        /// </summary>
+        /// <param name="empleado">El parametro empleado debe tenemos todos los campos inicializados</param>
+        /// <returns></returns>
         #region empleados
         public string AgregarEmpleado(Empleado empleado)
         {
             string respuesta = string.Empty;
             using (SQLiteConnection conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;
@@ -129,11 +168,17 @@ namespace CapaDatos
             return respuesta;
         }
 
+
+        /// <summary>
+        /// Este metodo edita un empleado de la base de datos 
+        /// </summary>
+        /// <param name="empleado">sSe requiere un parametro de tipo empleado con el idDmpleado</param>
+        /// <returns></returns>
         public string EditarEmpleado(Empleado empleado)
         {
             using (SQLiteConnection conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;
@@ -151,11 +196,16 @@ namespace CapaDatos
             }
         }
 
+        /// <summary>
+        /// Este metodo elimina un empelado de la BDD
+        /// </summary>
+        /// <param name="empleado">Se requiere un paramentro de tipo empelado con el idEmpleado</param>
+        /// <returns></returns>
         public string EliminarEmpleado(Empleado empleado)
         {
             using (SQLiteConnection conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;
@@ -168,12 +218,16 @@ namespace CapaDatos
             }
         }
 
+        /// <summary>
+        /// Este metodo muestra todos los Empleados de la BDD
+        /// </summary>
+        /// <returns>Devuelve un Datatable</returns>
         public DataTable MostrarTodosLosEmpleados()
         {
             DataTable data = new DataTable();
             using (var conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;
@@ -185,6 +239,68 @@ namespace CapaDatos
                 }
             }
             return data;
+        }
+
+        /// <summary>
+        /// Funcion que verifica la entrada al empleado
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="contrasena"></param>
+        /// <returns></returns>
+        public DataTable VerificarAcceso(string usuario, string contrasena)
+        {
+            DataTable data = new DataTable();
+            using (var conexion = Connection)
+            {
+                conexion.Open();
+                using (SQLiteCommand command = new SQLiteCommand())
+                {
+                    command.Connection = conexion;
+                    command.CommandText = "SELECT * FROM Empleado WHERE usuario=@usuario and contrasena=@contrasena";
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@usuario", usuario);
+                    command.Parameters.AddWithValue("@contrasena", contrasena);
+                    SQLiteDataAdapter sQLite = new SQLiteDataAdapter(command);
+                    sQLite.Fill(data);
+                }
+            }
+            return data;
+        }
+
+        public string IngresarEmpleadoActual(Empleado empleado)
+        {
+            using (SQLiteConnection conexion = Connection)
+            {
+                conexion.Open();
+                using (SQLiteCommand command = new SQLiteCommand())
+                {
+                    command.Connection = conexion;
+                    command.CommandText = "update EmpleadoActual set idEmpleado=@idEmpleado";
+                    command.Parameters.AddWithValue("@idEmpleado", empleado.IdEmpleado);
+                    command.CommandType = CommandType.Text;
+                    if (command.ExecuteNonQuery() == 1) return "Ingreso exitoso";
+                    else return "No se registro";
+                }
+            }
+        }
+
+
+        public int ObtenerIDEmpleadoActual()
+        {
+            DataTable data = new DataTable();
+            using (var conexion = Connection)
+            {
+                conexion.Open();
+                using (SQLiteCommand command = new SQLiteCommand())
+                {
+                    command.Connection = conexion;
+                    command.CommandText = "SELECT * FROM EmpleadoActual";
+                    command.CommandType = CommandType.Text;
+                    SQLiteDataAdapter sQLite = new SQLiteDataAdapter(command);
+                    sQLite.Fill(data);
+                }
+            }
+            return Convert.ToInt32(data.Rows[0][0]);
         }
         #endregion
 
@@ -203,7 +319,7 @@ namespace CapaDatos
             using (SQLiteConnection conexion = Connection)
             {
                 //Abrimos la conexion con la base de datos
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     //Al comando le asignamos la conexion previamente abierta
@@ -226,11 +342,17 @@ namespace CapaDatos
             return respuesta;
         }
 
+        /// <summary>
+        /// Este metodo edita una funcion de la BDD
+        /// </summary>
+        /// <param name="funcion">Debe tener un parametro de tipo funcion con el idFuncion</param>
+        /// <param name="sala">Debe detener un parametro de tipo sala con el idSala</param>
+        /// <returns></returns>
         public string EditarFuncion(Funcion funcion, Sala sala)
         {
             using (SQLiteConnection conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;
@@ -250,11 +372,16 @@ namespace CapaDatos
             }
         }
 
+        /// <summary>
+        /// Este metodo elimina una funcion de la BDD
+        /// </summary>
+        /// <param name="funcion">Debe contener un parametro de tipo funcion con el idFuncion</param>
+        /// <returns></returns>
         public string EliminarFuncion(Funcion funcion)
         {
             using (SQLiteConnection conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;
@@ -267,12 +394,17 @@ namespace CapaDatos
             }
         }
 
+
+        /// <summary>
+        /// Este metodo muestra todas las funciones disponibles independientemente de la fecha
+        /// </summary>
+        /// <returns>Devuelve un datatable</returns>
         public DataTable MostrarTodasLasFunciones()
         {
             DataTable data = new DataTable();
             using (var conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;

@@ -6,6 +6,10 @@ namespace CapaDatos
 {
     public class Articulo : Conexion
     {
+
+        /// <summary>
+        /// Campos de la clase
+        /// </summary>
         private int idArticulo;
         private string codigo;
         private string descripcion;
@@ -17,6 +21,14 @@ namespace CapaDatos
 
         }
 
+        /// <summary>
+        /// Constructor 
+        /// </summary>
+        /// <param name="idArticulo"></param>
+        /// <param name="codigo"></param>
+        /// <param name="descripcion"></param>
+        /// <param name="precioProveedor"></param>
+        /// <param name="precioVenta"></param>
         public Articulo(int idArticulo, string codigo, string descripcion, float precioProveedor, float precioVenta)
         {
             this.idArticulo = idArticulo;
@@ -26,21 +38,31 @@ namespace CapaDatos
             this.precioVenta = precioVenta;
         }
 
+
+        /// <summary>
+        /// Propiedades de la clase
+        /// </summary>
+        #region
         public string Codigo { get => codigo; set => codigo = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public float PrecioProveedor { get => precioProveedor; set => precioProveedor = value; }
         public float PrecioVenta { get => precioVenta; set => precioVenta = value; }
         public int IdArticulo { get => idArticulo; set => idArticulo = value; }
-
+        #endregion
 
 
         #region Articulos
+        /// <summary>
+        /// Este metodo agrega un nuevo articulo a la BDD
+        /// </summary>
+        /// <param name="articulo"></param>
+        /// <returns></returns>
         public string AgregarArticulo(Articulo articulo)
         {
             string respuesta = string.Empty;
             using (SQLiteConnection conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;
@@ -58,11 +80,16 @@ namespace CapaDatos
             return respuesta;
         }
 
+        /// <summary>
+        /// Este metodo edita un articulo de la BDD
+        /// </summary>
+        /// <param name="articulo"></param>
+        /// <returns></returns>
         public string EditarArticulo(Articulo articulo)
         {
             using (SQLiteConnection conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;
@@ -80,11 +107,17 @@ namespace CapaDatos
             }
         }
 
+        
+        /// <summary>
+        /// Este metodo elimina un articulo de la base de datos
+        /// </summary>
+        /// <param name="articulo"></param>
+        /// <returns></returns>
         public string EliminarArticulo(Articulo articulo)
         {
             using (SQLiteConnection conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;
@@ -97,12 +130,17 @@ namespace CapaDatos
             }
         }
 
+
+        /// <summary>
+        /// Este metodo muestra todos los articulos registrados de la tabla Articulo, y devuelve un datatable
+        /// </summary>
+        /// <returns></returns>
         public DataTable MostrarTodosLosArticulos()
         {
             DataTable data = new DataTable();
             using (var conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;
@@ -116,13 +154,17 @@ namespace CapaDatos
             return data;
         }
 
-
+        /// <summary>
+        /// Este metodo un articulo buscado por su codigo en un datatable
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <returns></returns>
         public DataTable BuscarArticuloPorCodigo(string codigo)
         {
             DataTable data = new DataTable();
             using (var conexion = Connection)
             {
-                Connection.Open();
+                conexion.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = conexion;

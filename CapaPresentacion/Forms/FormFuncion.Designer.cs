@@ -61,9 +61,9 @@ namespace CapaPresentacion.Forms
             this.groupBoxDatos.Controls.Add(this.buttonEditar);
             this.groupBoxDatos.Controls.Add(this.dataGridViewFunciones);
             this.groupBoxDatos.Location = new System.Drawing.Point(320, 10);
-            this.groupBoxDatos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxDatos.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxDatos.Name = "groupBoxDatos";
-            this.groupBoxDatos.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxDatos.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxDatos.Size = new System.Drawing.Size(686, 405);
             this.groupBoxDatos.TabIndex = 1;
             this.groupBoxDatos.TabStop = false;
@@ -72,7 +72,7 @@ namespace CapaPresentacion.Forms
             // buttonEliminar
             // 
             this.buttonEliminar.Location = new System.Drawing.Point(90, 365);
-            this.buttonEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(81, 35);
             this.buttonEliminar.TabIndex = 2;
@@ -83,7 +83,7 @@ namespace CapaPresentacion.Forms
             // buttonEditar
             // 
             this.buttonEditar.Location = new System.Drawing.Point(4, 365);
-            this.buttonEditar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonEditar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.Size = new System.Drawing.Size(81, 35);
             this.buttonEditar.TabIndex = 1;
@@ -93,9 +93,11 @@ namespace CapaPresentacion.Forms
             // 
             // dataGridViewFunciones
             // 
+            this.dataGridViewFunciones.AllowUserToAddRows = false;
+            this.dataGridViewFunciones.AllowUserToDeleteRows = false;
             this.dataGridViewFunciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewFunciones.Location = new System.Drawing.Point(2, 15);
-            this.dataGridViewFunciones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewFunciones.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewFunciones.MultiSelect = false;
             this.dataGridViewFunciones.Name = "dataGridViewFunciones";
             this.dataGridViewFunciones.ReadOnly = true;
@@ -122,9 +124,9 @@ namespace CapaPresentacion.Forms
             this.groupBoxRegistro.Controls.Add(this.textBoxGenero);
             this.groupBoxRegistro.Controls.Add(this.textBoxNombreDescripcion);
             this.groupBoxRegistro.Location = new System.Drawing.Point(9, 10);
-            this.groupBoxRegistro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxRegistro.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxRegistro.Name = "groupBoxRegistro";
-            this.groupBoxRegistro.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxRegistro.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxRegistro.Size = new System.Drawing.Size(295, 405);
             this.groupBoxRegistro.TabIndex = 0;
             this.groupBoxRegistro.TabStop = false;
@@ -135,7 +137,7 @@ namespace CapaPresentacion.Forms
             this.dateTimePickerTiempo.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimePickerTiempo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dateTimePickerTiempo.Location = new System.Drawing.Point(20, 319);
-            this.dateTimePickerTiempo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerTiempo.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerTiempo.Name = "dateTimePickerTiempo";
             this.dateTimePickerTiempo.ShowUpDown = true;
             this.dateTimePickerTiempo.Size = new System.Drawing.Size(183, 20);
@@ -154,7 +156,7 @@ namespace CapaPresentacion.Forms
             // numericUpDownPrecioVenta
             // 
             this.numericUpDownPrecioVenta.Location = new System.Drawing.Point(20, 239);
-            this.numericUpDownPrecioVenta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDownPrecioVenta.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDownPrecioVenta.Maximum = new decimal(new int[] {
             300,
             0,
@@ -167,7 +169,7 @@ namespace CapaPresentacion.Forms
             // numericUpDownDuracion
             // 
             this.numericUpDownDuracion.Location = new System.Drawing.Point(20, 149);
-            this.numericUpDownDuracion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDownDuracion.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDownDuracion.Maximum = new decimal(new int[] {
             300,
             0,
@@ -181,7 +183,7 @@ namespace CapaPresentacion.Forms
             // 
             this.dateTimePickerFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerFecha.Location = new System.Drawing.Point(20, 281);
-            this.dateTimePickerFecha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerFecha.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerFecha.Name = "dateTimePickerFecha";
             this.dateTimePickerFecha.Size = new System.Drawing.Size(183, 20);
             this.dateTimePickerFecha.TabIndex = 5;
@@ -189,7 +191,7 @@ namespace CapaPresentacion.Forms
             // buttonCancelar
             // 
             this.buttonCancelar.Location = new System.Drawing.Point(121, 365);
-            this.buttonCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(81, 35);
             this.buttonCancelar.TabIndex = 8;
@@ -200,7 +202,7 @@ namespace CapaPresentacion.Forms
             // buttonGuardar
             // 
             this.buttonGuardar.Location = new System.Drawing.Point(20, 365);
-            this.buttonGuardar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(81, 35);
             this.buttonGuardar.TabIndex = 7;
@@ -232,7 +234,7 @@ namespace CapaPresentacion.Forms
             // 
             this.comboBoxSalas.FormattingEnabled = true;
             this.comboBoxSalas.Location = new System.Drawing.Point(20, 54);
-            this.comboBoxSalas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBoxSalas.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxSalas.Name = "comboBoxSalas";
             this.comboBoxSalas.Size = new System.Drawing.Size(183, 21);
             this.comboBoxSalas.TabIndex = 0;
@@ -261,7 +263,7 @@ namespace CapaPresentacion.Forms
             // textBoxGenero
             // 
             this.textBoxGenero.Location = new System.Drawing.Point(20, 194);
-            this.textBoxGenero.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxGenero.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxGenero.Name = "textBoxGenero";
             this.textBoxGenero.Size = new System.Drawing.Size(183, 20);
             this.textBoxGenero.TabIndex = 3;
@@ -269,7 +271,7 @@ namespace CapaPresentacion.Forms
             // textBoxNombreDescripcion
             // 
             this.textBoxNombreDescripcion.Location = new System.Drawing.Point(20, 102);
-            this.textBoxNombreDescripcion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxNombreDescripcion.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxNombreDescripcion.Name = "textBoxNombreDescripcion";
             this.textBoxNombreDescripcion.Size = new System.Drawing.Size(183, 20);
             this.textBoxNombreDescripcion.TabIndex = 1;
@@ -281,7 +283,7 @@ namespace CapaPresentacion.Forms
             this.ClientSize = new System.Drawing.Size(1016, 430);
             this.Controls.Add(this.groupBoxDatos);
             this.Controls.Add(this.groupBoxRegistro);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormFuncion";
             this.Text = "FormFuncion";
             this.groupBoxDatos.ResumeLayout(false);

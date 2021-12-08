@@ -51,6 +51,11 @@ namespace CapaPresentacion.Forms
             }
         }
 
+        /// <summary>
+        /// Evento que cancela el cobro y cierra el form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCancelar_Click_1(object sender, EventArgs e)
         {
             this.Hide();

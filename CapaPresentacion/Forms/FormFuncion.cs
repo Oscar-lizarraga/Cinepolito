@@ -6,13 +6,17 @@ namespace CapaPresentacion.Forms
 {
     public partial class FormFuncion : Form
     {
+        /// <summary>
+        /// Campos de la clase formfuncion
+        /// </summary>
         private bool editar = false;
         private int idFuncion = 0;
         private int  idSala = 0;
 
-
-
-
+        /// <summary>
+        /// Constructor por defecto que nos muestra todas las funciones de la fecha actual y muestra todas las salas 
+        /// disponibles para agregarles nuevas peliculas 
+        /// </summary>
         public FormFuncion()
         {
             InitializeComponent();
@@ -23,12 +27,16 @@ namespace CapaPresentacion.Forms
             }
         }
 
+        /// <summary>
+        /// Funcion que limpia los componentes en su estado por defecto
+        /// </summary>
         private void LimpiarControles()
         {
             this.idFuncion = 0;
             this.idSala = 0;
             this.editar = false;
-            this.comboBoxSalas.SelectedIndex = -1;
+            this.comboBoxSalas.Items.Clear();
+            this.comboBoxSalas.Text = "Sala";
             this.textBoxNombreDescripcion.Text = string.Empty;
             this.numericUpDownDuracion.Value = 0;
             this.numericUpDownPrecioVenta.Value = 0;
@@ -42,6 +50,10 @@ namespace CapaPresentacion.Forms
             }
         }
 
+        /// <summary>
+        /// Funcion que valida que los componentes tengan datos ingresados correctamente
+        /// </summary>
+        /// <returns></returns>
         private bool ValidarControles()
         {
             if (this.comboBoxSalas.SelectedIndex == -1)
@@ -78,10 +90,18 @@ namespace CapaPresentacion.Forms
 
         }
 
-
+        /// <summary>
+        /// Evento que guardara una nueva pelicula en la tabla
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
+            //Validamos que los componentes tengan los datos correctamente 
             if (this.ValidarControles()) return;
+
+            //Si la opcion de editar esta habilitada mandaremos llamar al metodo editarFuncion de la clase cine 
+            //en caso contrario sera una nueva funcion
             if(this.editar)
             {
                 CapaDatos.Funcion funcion = new CapaDatos.Funcion();
@@ -90,6 +110,8 @@ namespace CapaPresentacion.Forms
                 funcion.Duracion = Convert.ToInt32(this.numericUpDownDuracion.Value);
                 funcion.Genero = this.textBoxGenero.Text;
                 funcion.PrecioVenta = Convert.ToSingle(this.numericUpDownPrecioVenta.Value);
+                
+                //Pegamos las fechas de dia-mes-año con la hora en la que se estrena la pelicula
                 string fecha_aux = this.dateTimePickerFecha.Value.ToString("yyyy-MM-dd ") + this.dateTimePickerTiempo.Value.ToString("hh:mm:ss");
                 funcion.SetFecha(Convert.ToDateTime(fecha_aux));
                 CapaDatos.Sala sala = new CapaDatos.Sala();
@@ -113,17 +135,30 @@ namespace CapaPresentacion.Forms
         }
 
 
-
+        /// <summary>
+        /// Este evento cancela el ingreso y limpia los componentes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             this.LimpiarControles();
         }
 
+        /// <summary>
+        /// Este evento edita una funcion de la tabla, especificamente la fila seleccionada
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-            if(this.dataGridViewFunciones.Rows.Count > 1)
+            //si la tabla no tiene datos no habra nada que editar
+            if(this.dataGridViewFunciones.Rows.Count != 0)
             {
+                //Nos devuelve el indice en el cual esta posicionada la seleccion en la tabla para poder obtener los datos
                 int i = this.dataGridViewFunciones.SelectedRows[0].Index;
+
+                //Enviamos todos los datos de la tabla a los componentes de la funcion para poder editarlos
                 this.idFuncion = Convert.ToInt32(this.dataGridViewFunciones.Rows[i].Cells["idFuncion"].Value);
                 this.idSala = Convert.ToInt32(this.dataGridViewFunciones.Rows[i].Cells["idSala"].Value);
                 this.textBoxNombreDescripcion.Text = this.dataGridViewFunciones.Rows[i].Cells["descripcion"].Value.ToString();
@@ -136,12 +171,21 @@ namespace CapaPresentacion.Forms
             }
         }
 
+        /// <summary>
+        /// Evento que elimina una funcion de la tabla
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
-            if (this.dataGridViewFunciones.Rows.Count > 1)
+            //Si no hay elementos en la tabla no habra nada que eliminarS
+            if (this.dataGridViewFunciones.Rows.Count != 0)
             {
+                //Nos devuelve el indice en el cual esta posicionada la seleccion en la tabla para poder obtener los datos
                 int i = this.dataGridViewFunciones.SelectedRows[0].Index;
                 CapaDatos.Funcion funcion = new CapaDatos.Funcion();
+                
+                //Obtenemos el idFuncion para poder eliminar la funcion de la BDD
                 funcion.IdFuncion = Convert.ToInt32(this.dataGridViewFunciones.Rows[i].Cells["idFuncion"].Value);
                 MessageBox.Show(new CapaDatos.Cine().EliminarFuncion(funcion));
                 this.LimpiarControles();

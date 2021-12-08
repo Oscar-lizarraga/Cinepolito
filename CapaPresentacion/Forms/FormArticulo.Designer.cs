@@ -57,9 +57,9 @@ namespace CapaPresentacion.Forms
             this.groupBoxDatos.Controls.Add(this.buttonEditar);
             this.groupBoxDatos.Controls.Add(this.dataGridViewArticulos);
             this.groupBoxDatos.Location = new System.Drawing.Point(320, 22);
-            this.groupBoxDatos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxDatos.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxDatos.Name = "groupBoxDatos";
-            this.groupBoxDatos.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxDatos.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxDatos.Size = new System.Drawing.Size(686, 405);
             this.groupBoxDatos.TabIndex = 1;
             this.groupBoxDatos.TabStop = false;
@@ -68,7 +68,7 @@ namespace CapaPresentacion.Forms
             // buttonEliminar
             // 
             this.buttonEliminar.Location = new System.Drawing.Point(90, 365);
-            this.buttonEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(81, 35);
             this.buttonEliminar.TabIndex = 2;
@@ -79,7 +79,7 @@ namespace CapaPresentacion.Forms
             // buttonEditar
             // 
             this.buttonEditar.Location = new System.Drawing.Point(4, 365);
-            this.buttonEditar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonEditar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.Size = new System.Drawing.Size(81, 35);
             this.buttonEditar.TabIndex = 1;
@@ -89,9 +89,11 @@ namespace CapaPresentacion.Forms
             // 
             // dataGridViewArticulos
             // 
+            this.dataGridViewArticulos.AllowUserToAddRows = false;
+            this.dataGridViewArticulos.AllowUserToDeleteRows = false;
             this.dataGridViewArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewArticulos.Location = new System.Drawing.Point(2, 15);
-            this.dataGridViewArticulos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewArticulos.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewArticulos.MultiSelect = false;
             this.dataGridViewArticulos.Name = "dataGridViewArticulos";
             this.dataGridViewArticulos.ReadOnly = true;
@@ -114,9 +116,9 @@ namespace CapaPresentacion.Forms
             this.groupBoxRegistro.Controls.Add(this.textBoxDescripcion);
             this.groupBoxRegistro.Controls.Add(this.textBoxNombreCodigo);
             this.groupBoxRegistro.Location = new System.Drawing.Point(9, 22);
-            this.groupBoxRegistro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxRegistro.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxRegistro.Name = "groupBoxRegistro";
-            this.groupBoxRegistro.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxRegistro.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxRegistro.Size = new System.Drawing.Size(295, 405);
             this.groupBoxRegistro.TabIndex = 0;
             this.groupBoxRegistro.TabStop = false;
@@ -141,7 +143,7 @@ namespace CapaPresentacion.Forms
             0,
             65536});
             this.numericUpDownPrecioVenta.Location = new System.Drawing.Point(20, 220);
-            this.numericUpDownPrecioVenta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDownPrecioVenta.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDownPrecioVenta.Maximum = new decimal(new int[] {
             300,
             0,
@@ -160,7 +162,7 @@ namespace CapaPresentacion.Forms
             0,
             65536});
             this.numericUpDownPrecioProveedor.Location = new System.Drawing.Point(20, 162);
-            this.numericUpDownPrecioProveedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDownPrecioProveedor.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDownPrecioProveedor.Maximum = new decimal(new int[] {
             300,
             0,
@@ -173,7 +175,7 @@ namespace CapaPresentacion.Forms
             // buttonCancelar
             // 
             this.buttonCancelar.Location = new System.Drawing.Point(121, 365);
-            this.buttonCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(81, 35);
             this.buttonCancelar.TabIndex = 5;
@@ -184,7 +186,7 @@ namespace CapaPresentacion.Forms
             // buttonGuardar
             // 
             this.buttonGuardar.Location = new System.Drawing.Point(20, 365);
-            this.buttonGuardar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(81, 35);
             this.buttonGuardar.TabIndex = 4;
@@ -225,7 +227,7 @@ namespace CapaPresentacion.Forms
             // textBoxDescripcion
             // 
             this.textBoxDescripcion.Location = new System.Drawing.Point(20, 106);
-            this.textBoxDescripcion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxDescripcion.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxDescripcion.Name = "textBoxDescripcion";
             this.textBoxDescripcion.Size = new System.Drawing.Size(183, 20);
             this.textBoxDescripcion.TabIndex = 1;
@@ -233,7 +235,7 @@ namespace CapaPresentacion.Forms
             // textBoxNombreCodigo
             // 
             this.textBoxNombreCodigo.Location = new System.Drawing.Point(20, 57);
-            this.textBoxNombreCodigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxNombreCodigo.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxNombreCodigo.Name = "textBoxNombreCodigo";
             this.textBoxNombreCodigo.Size = new System.Drawing.Size(183, 20);
             this.textBoxNombreCodigo.TabIndex = 0;
@@ -245,7 +247,7 @@ namespace CapaPresentacion.Forms
             this.ClientSize = new System.Drawing.Size(1055, 448);
             this.Controls.Add(this.groupBoxDatos);
             this.Controls.Add(this.groupBoxRegistro);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormArticulo";
             this.Text = "FormArticulo";
             this.groupBoxDatos.ResumeLayout(false);

@@ -127,6 +127,8 @@ namespace CapaPresentacion.Forms
             // 
             // dataGridViewVentas
             // 
+            this.dataGridViewVentas.AllowUserToAddRows = false;
+            this.dataGridViewVentas.AllowUserToDeleteRows = false;
             this.dataGridViewVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewVentas.Location = new System.Drawing.Point(17, 39);
             this.dataGridViewVentas.Margin = new System.Windows.Forms.Padding(2);

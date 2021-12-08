@@ -68,7 +68,7 @@ namespace CapaPresentacion.Forms
             // 
             this.numericUpDownRecibio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDownRecibio.Location = new System.Drawing.Point(26, 176);
-            this.numericUpDownRecibio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericUpDownRecibio.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDownRecibio.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -93,7 +93,7 @@ namespace CapaPresentacion.Forms
             // 
             this.textBoxCambio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxCambio.Location = new System.Drawing.Point(26, 236);
-            this.textBoxCambio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxCambio.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCambio.Name = "textBoxCambio";
             this.textBoxCambio.Size = new System.Drawing.Size(168, 28);
             this.textBoxCambio.TabIndex = 3;
@@ -113,24 +113,26 @@ namespace CapaPresentacion.Forms
             this.radioButtonEfectivo.AutoSize = true;
             this.radioButtonEfectivo.Checked = true;
             this.radioButtonEfectivo.Location = new System.Drawing.Point(26, 119);
-            this.radioButtonEfectivo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButtonEfectivo.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonEfectivo.Name = "radioButtonEfectivo";
             this.radioButtonEfectivo.Size = new System.Drawing.Size(64, 17);
             this.radioButtonEfectivo.TabIndex = 0;
             this.radioButtonEfectivo.TabStop = true;
             this.radioButtonEfectivo.Text = "Efectivo";
             this.radioButtonEfectivo.UseVisualStyleBackColor = true;
+            this.radioButtonEfectivo.CheckedChanged += new System.EventHandler(this.radioButtonEfectivo_CheckedChanged);
             // 
             // radioButtonTarjeta
             // 
             this.radioButtonTarjeta.AutoSize = true;
             this.radioButtonTarjeta.Location = new System.Drawing.Point(100, 119);
-            this.radioButtonTarjeta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButtonTarjeta.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonTarjeta.Name = "radioButtonTarjeta";
             this.radioButtonTarjeta.Size = new System.Drawing.Size(58, 17);
             this.radioButtonTarjeta.TabIndex = 1;
             this.radioButtonTarjeta.Text = "Tarjeta";
             this.radioButtonTarjeta.UseVisualStyleBackColor = true;
+            this.radioButtonTarjeta.CheckedChanged += new System.EventHandler(this.radioButtonTarjeta_CheckedChanged);
             // 
             // labelTotalVenta
             // 
@@ -149,7 +151,7 @@ namespace CapaPresentacion.Forms
             this.buttonAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAceptar.Location = new System.Drawing.Point(26, 280);
-            this.buttonAceptar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonAceptar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(88, 36);
             this.buttonAceptar.TabIndex = 4;
@@ -163,7 +165,7 @@ namespace CapaPresentacion.Forms
             this.buttonCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancelar.Location = new System.Drawing.Point(134, 280);
-            this.buttonCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(96, 36);
             this.buttonCancelar.TabIndex = 5;
@@ -187,7 +189,7 @@ namespace CapaPresentacion.Forms
             this.Controls.Add(this.numericUpDownRecibio);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormVentaCobrar";
             this.Text = "FormVentaCobrar";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRecibio)).EndInit();
